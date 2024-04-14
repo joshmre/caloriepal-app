@@ -1,33 +1,369 @@
+/* Base settings */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  font-size: 16px;
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #23232e;
+  --bg-secondary: #141418;
+  --transition-speed: 600ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.footer {
+  margin-top: auto;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+/* Navigation settings */
+.navigation {
+  position: fixed; /* Ensure the navigation bar stays in a fixed position */
+  top: 0;
+  left: 0;
+  width: 5rem; /* Initial width */
+  height: 100vh; /* Full height */
+  background-color: var(--bg-primary); /* Background color */
+  transition: width var(--transition-speed); /* Smooth transition on hover */
+}
+
+/* Expanded width on hover */
+.navigation:hover {
+  width: 16rem; /* Expanded width */
+}
+
+/* Navigation bar */
+.nav-bar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+/* Navigation items */
+.nav-item {
+  width: 100%;
+}
+
+/* Navigation links */
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: filter var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.nav-link:hover {
+  filter: grayscale(0%) opacity(1);
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+/* Link text */
+.link-text {
+  display: none; /* Hide link text by default */
+  color: var(--text-secondary);
+  margin-left: 1rem;
+}
+
+/* Show link text on hover */
+.navigation:hover .link-text {
+  display: inline; /* Show link text on hover */
+}
+
+/* Logo settings */
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  font-size: 1.5rem;
+  letter-spacing: 0.2ch;
+  width: 100%;
+}
+
+/* Logo svg rotation */
+.logo svg {
+  transform: rotate(0deg);
+  transition: var(--transition-speed);
+}
+
+/* Rotate svg on hover */
+.navigation:hover .logo svg {
+  transform: rotate(-180deg);
+}
+
+/* Link icons */
+.nav-link svg {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+
+/* Font Awesome settings */
+.fa-primary {
+  color: var(--text-secondary);
+}
+
+.fa-secondary {
+  color: #29648a;
+}
+
+.fa-primary,
+.fa-secondary {
+  transition: var(--transition-speed);
+}
+
+/* Form Container */
+.form-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.form-button {
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #45a049;
+}
+
+/* Calorie Results */
+.calorie-results {
+  margin-top: 30px; /* Adjust spacing as needed */
+  margin-left: 10px;
+  border: 1px solid #ccc; /* Border around the calorie results */
+  padding: 10px; /* Padding inside the calorie results */
+  width: 300px; /* Adjust width as needed */
+  border-radius: 10px;
+}
+
+.calorie-results h2 {
+  font-size: 1.5rem; /* Larger font size for the results heading */
+  margin-bottom: 10px; /* Spacing below the heading */
+}
+
+.calorie-results p {
+  margin: 5px 0; /* Adjust spacing between each calorie output */
+}
+
+.calculator-note {
+  height: 75px;
+  width: 870px;
+  margin: 0px;
+  text-align: center;
+}
+
+/* Logcals Page Styles */
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px; /* Adjusted padding */
+}
+
+/* Left Column */
+.left-column {
+  flex: 1; /* Take up remaining space */
+  padding: 10px; /* Adjusted padding */
+  max-width: 400px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Added right margin */
+  height: auto; /* Auto height based on content */
+}
+
+/* Set Goal Section */
+.set-goal {
+  margin-top: 10px; /* Adjusted margin top */
+  margin-bottom: 10px; /* Adjusted margin bottom */
+}
+
+/* Add Meal Section */
+.add-meal {
+  margin-top: 10px; /* Adjusted margin top */
+  margin-bottom: 10px; /* Adjusted margin bottom */
+}
+
+/* Button Container */
+.button-container {
+  margin-top: 10px;
+}
+
+/* Input Container */
+.input-container {
+  margin-bottom: 10px;
+}
+
+/* Right Column */
+.right-column {
+  flex: 1; /* Take up remaining space */
+  padding: 10px;
+  margin-left: 20px; /* Adjusted margin */
+  max-width: 400px;
+}
+
+/* Form Elements */
+.input-container input,
+.input-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-container button {
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: #45a049;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.goal-message,
+.calories-consumed,
+.calories-remaining {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+
+.chat-container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chat-history {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.chat-message.user {
+  text-align: right;
+  background-color: #8cdd90;
+}
+
+.chat-message.system {
+  text-align: left;
+  background-color: #f1f1f1;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.chat-input button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-left: 10px;
+  border: none;
+  background-color: #45a049;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.chat-input button:hover {
+  background-color: #4caf50;
 }
