@@ -1,0 +1,30 @@
+/* mediaqueries.css */
+
+/* Media query for screens with a width of 430px and a height of 932px */
+@media only screen and (max-width: 430px) and (max-height: 932px) {
+  .main-container {
+    flex-direction: column;
+    width: 300px;
+    margin-left: 50px;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    padding: 0;
+  }
+
+  .input-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .button-container {
+    width: 100%;
+    text-align: center; /* Center align buttons */
+  }
+
+  .error-message {
+    font-size: 0.8rem;
+  }
+}

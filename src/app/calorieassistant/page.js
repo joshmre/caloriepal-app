@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import OpenAI from 'openai';
+import './mediaqueries.css'
 
 const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
 

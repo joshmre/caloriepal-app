@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { FaRegCircleXmark } from "react-icons/fa6";
+import './mediaqueries.css'
 
 const Logcals = () => {
   const [goalWeight, setGoalWeight] = useState('');
